@@ -3,7 +3,6 @@ Color 02
 CLS
 
 :Start
-color 02
 CLS
 
 :: Menu and Instructions
@@ -38,32 +37,32 @@ IF ERRORLEVEL 3 GOTO Bad Internet
 IF ERRORLEVEL 2 GOTO Bad file remover
 IF ERRORLEVEL 1 GOTO Files Fixer
 :Flush DNS
-ECHO Flushing...
+ECHO DNS Flushing...
 ipconfig /flushdns
 TIMEOUT /T 2 /NOBREAK >NUL
 GOTO AskAnotherOption
 
 :Temp Deleting
-ECHO Deleting... 
+ECHO Deleting Temps... 
 del /q/f/s %TEMP%\
 TIMEOUT /T 2 /NOBREAK >NUL
 GOTO AskAnotherOption
 
 :Bad Internet
-ECHO Closing all windows..
+ECHO Reseting IP...
 NETSH INT IP RESET
 TIMEOUT /T 2 /NOBREAK >NUL
 GOTO AskAnotherOption
 
 :Bad file remover
-ECHO Removing... 
+ECHO Removing Files... 
 ECHO !!===!!Restart Pc to apply effect!!===!!
 CLEANMGR
 TIMEOUT /T 4 /NOBREAK >NUL
 GOTO AskAnotherOption
 
 :Files Fixer
-ECHO Switching user... (put your switch user code here)
+ECHO Fixing Files... 
 SFC /SCANNOW
 TIMEOUT /T 2 /NOBREAK >NUL
 GOTO AskAnotherOption
@@ -83,4 +82,3 @@ GOTO End
 
 
 :End
-ECHO Exiting. Goodbye!
